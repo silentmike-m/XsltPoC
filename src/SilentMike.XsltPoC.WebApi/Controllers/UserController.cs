@@ -14,6 +14,6 @@
         public UserController(IMediator mediator) => this.mediator = mediator;
 
         [HttpPost(Name = "SendUserEmail")]
-        public async Task SendUserEmail(SendUserEmail request) => await this.mediator.Send(request);
+        public async Task<string> SendUserEmail(SendUserEmail request) => await this.mediator.Send(request);
     }
 }

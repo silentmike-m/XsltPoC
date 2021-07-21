@@ -10,8 +10,10 @@ namespace SilentMike.XsltPoC.WebApi
     using System.Text.Json.Serialization;
     using MediatR;
     using Microsoft.AspNetCore.Http;
+    using Microsoft.Extensions.FileProviders;
     using Microsoft.OpenApi.Models;
     using Serilog;
+    using SilentMike.XsltPoC.WebApi.Services;
 
     public class Startup
     {
@@ -27,6 +29,9 @@ namespace SilentMike.XsltPoC.WebApi
             services.AddLogging(configure => configure.AddSerilog());
             services.AddHealthChecks();
             services.AddMediatR(Assembly.GetExecutingAssembly());
+
+            services.AddSingleton<IFileProvider>(new ManifestEmbeddedFileProvider(Assembly.GetExecutingAssembly()));
+            services.AddTransient<XmlService>();
 
             services.AddHttpContextAccessor();
 

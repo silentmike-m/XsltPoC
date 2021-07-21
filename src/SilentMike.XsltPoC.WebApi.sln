@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SilentMike.XsltPoC.WebApi", "SilentMike.XsltPoC.WebApi\SilentMike.XsltPoC.WebApi.csproj", "{335F7DE8-FBC4-4B73-BDD3-794748AAB980}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{335F7DE8-FBC4-4B73-BDD3-794748AAB980}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{335F7DE8-FBC4-4B73-BDD3-794748AAB980}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{335F7DE8-FBC4-4B73-BDD3-794748AAB980}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{335F7DE8-FBC4-4B73-BDD3-794748AAB980}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AD8F8B66-2E59-47F4-811C-B080052CC332}
+	EndGlobalSection
+EndGlobal

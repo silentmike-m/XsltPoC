@@ -1,4 +1,4 @@
-namespace SilentMike.XsltPoC.WebApi
+namespace SilentMike.XsltPoC.Cient
 {
     using System;
     using System.Linq;

@@ -1,4 +1,4 @@
-﻿namespace SilentMike.XsltPoC.WebApi.Entities
+﻿namespace SilentMike.XsltPoC.Shared.Entities
 {
     public sealed class UserThing
     {

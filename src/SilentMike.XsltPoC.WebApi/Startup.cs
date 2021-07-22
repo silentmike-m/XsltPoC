@@ -47,7 +47,11 @@ namespace SilentMike.XsltPoC.WebApi
                         host.Username(options.Username);
                         host.Password(options.Password);
                     });
-                    cfg.ConfigureEndpoints(context);
+                    //cfg.ConfigureEndpoints(context);
+                    cfg.ReceiveEndpoint("send-email", e =>
+                    {
+                        e.ConfigureConsumer<SendUserEmailConsumer>(context);
+                    });
                 });
             });
 

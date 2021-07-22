@@ -1,5 +1,6 @@
 ﻿namespace SilentMike.XsltPoC.Cient.Application.Users.CommandHandlers
 {
+    using System;
     using System.Linq;
     using System.Threading;
     using System.Threading.Tasks;
@@ -11,11 +12,12 @@
 
     internal sealed class SendUserEmailHandler : IRequestHandler<SendUserEmail>
     {
+        private readonly IBus bus;
         private readonly ILogger<SendUserEmailHandler> logger;
         private readonly IPublishEndpoint emailPublishEndpoint;
 
-        public SendUserEmailHandler(ILogger<SendUserEmailHandler> logger, IPublishEndpoint emailPublishEndpoint)
-            => (this.logger, this.emailPublishEndpoint) = (logger, emailPublishEndpoint);
+        public SendUserEmailHandler(IBus bus, ILogger<SendUserEmailHandler> logger, IPublishEndpoint emailPublishEndpoint)
+            => (this.bus, this.logger, this.emailPublishEndpoint) = (bus, logger, emailPublishEndpoint);
 
         public async Task<Unit> Handle(SendUserEmail request, CancellationToken cancellationToken)
         {
@@ -30,6 +32,9 @@
                 List = things,
                 UserName = request.UserName,
             };
+
+            var client = await this.bus.GetSendEndpoint(new Uri("queue:send-email"));
+            await client.Send(userEmail, cancellationToken);
 
             await this.emailPublishEndpoint.Publish(userEmail, cancellationToken);
 

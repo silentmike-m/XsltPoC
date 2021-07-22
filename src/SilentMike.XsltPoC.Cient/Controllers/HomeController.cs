@@ -1,4 +1,4 @@
-﻿namespace SilentMike.XsltPoC.WebApi.Controllers
+﻿namespace SilentMike.XsltPoC.Cient.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;

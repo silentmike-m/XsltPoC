@@ -1,9 +1,9 @@
-﻿namespace SilentMike.XsltPoC.WebApi.Application.Users.Commands
+﻿namespace SilentMike.XsltPoC.Cient.Application.Users.Queries
 {
     using System.Collections.Generic;
     using MediatR;
 
-    public sealed record SendUserEmail : IRequest
+    public sealed record GetUserHtmlEmail : IRequest<string>
     {
         public string UserName { get; init; } = string.Empty;
         public string UserEmail { get; init; } = string.Empty;

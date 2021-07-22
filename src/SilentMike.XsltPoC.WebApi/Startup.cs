@@ -1,7 +1,6 @@
 namespace SilentMike.XsltPoC.WebApi
 {
     using System.Reflection;
-    using System.Text.Json.Serialization;
     using MassTransit;
     using MediatR;
     using Microsoft.AspNetCore.Builder;
@@ -11,7 +10,6 @@ namespace SilentMike.XsltPoC.WebApi
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.FileProviders;
     using Microsoft.Extensions.Hosting;
-    using Microsoft.OpenApi.Models;
     using Serilog;
     using SilentMike.XsltPoC.WebApi.Application.Users.Consumers;
     using SilentMike.XsltPoC.WebApi.Services;
@@ -37,6 +35,7 @@ namespace SilentMike.XsltPoC.WebApi
             services.AddMassTransit(configure =>
             {
                 configure.AddConsumer<SendUserEmailConsumer>();
+                configure.AddConsumer<GetUserHtmlEmailConsumer>();
 
                 var options = new RabbitMqOptions();
                 this.Configuration.GetSection(RabbitMqOptions.SectionName).Bind(options);
@@ -47,11 +46,11 @@ namespace SilentMike.XsltPoC.WebApi
                         host.Username(options.Username);
                         host.Password(options.Password);
                     });
-                    //cfg.ConfigureEndpoints(context);
-                    cfg.ReceiveEndpoint("send-email", e =>
-                    {
-                        e.ConfigureConsumer<SendUserEmailConsumer>(context);
-                    });
+                    cfg.ConfigureEndpoints(context);
+                    //cfg.ReceiveEndpoint("send-email", e =>
+                    //{
+                    //    e.ConfigureConsumer<SendUserEmailConsumer>(context);
+                    //});
                 });
             });
 
@@ -59,26 +58,19 @@ namespace SilentMike.XsltPoC.WebApi
 
             services.AddHttpContextAccessor();
 
-            services.AddControllers().AddJsonOptions(options =>
-            {
-                options.JsonSerializerOptions.IgnoreNullValues = true;
-                options.JsonSerializerOptions.WriteIndented = true;
-                options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-            });
+            //services.ConfigureSwaggerGen(c =>
+            //{
+            //    c.CustomSchemaIds(s => s.FullName);
+            //});
 
-            services.ConfigureSwaggerGen(c =>
-            {
-                c.CustomSchemaIds(s => s.FullName);
-            });
-
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo
-                {
-                    Title = "XsltPoC WebApi",
-                    Version = "v1",
-                });
-            });
+            //services.AddSwaggerGen(c =>
+            //{
+            //    c.SwaggerDoc("v1", new OpenApiInfo
+            //    {
+            //        Title = "XsltPoC WebApi",
+            //        Version = "v1",
+            //    });
+            //});
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -92,18 +84,18 @@ namespace SilentMike.XsltPoC.WebApi
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("v1/swagger.json", "XsltPoC WebApi v1"));
+                //app.UseSwagger();
+                //app.UseSwaggerUI(c => c.SwaggerEndpoint("v1/swagger.json", "XsltPoC WebApi v1"));
             }
 
             app.UseHealthChecks("/health");
 
             app.UseRouting();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            //app.UseEndpoints(endpoints =>
+            //{
+            //    endpoints.MapControllers();
+            //});
         }
     }
 }

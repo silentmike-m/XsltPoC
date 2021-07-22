@@ -12,6 +12,7 @@ namespace SilentMike.XsltPoC.Cient
     using Microsoft.Extensions.Hosting;
     using Microsoft.OpenApi.Models;
     using Serilog;
+    using SilentMike.XsltPoC.Shared.Intefacies;
 
     public class Startup
     {
@@ -41,6 +42,9 @@ namespace SilentMike.XsltPoC.Cient
                     });
                     cfg.ConfigureEndpoints(context);
                 });
+
+                configure.AddRequestClient<IGetUserHtmlEmailRequest>();
+
             });
             services.AddMassTransitHostedService();
 

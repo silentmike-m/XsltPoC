@@ -1,7 +1,7 @@
 ﻿namespace SilentMike.XsltPoC.Cient.Entities
 {
     using System.Collections.Generic;
-    using SilentMike.XsltPoC.Shared.Intefacies;
+    using SilentMike.XsltPoC.Shared.Interfaces;
 
     internal sealed class GetUserHtmlEmailRequest : IGetUserHtmlEmailRequest
     {

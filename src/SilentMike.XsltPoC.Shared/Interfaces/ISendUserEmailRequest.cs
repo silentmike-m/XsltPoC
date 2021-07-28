@@ -1,11 +1,11 @@
-﻿namespace SilentMike.XsltPoC.Shared.Intefacies
+﻿namespace SilentMike.XsltPoC.Shared.Interfaces
 {
     using System.Collections.Generic;
 
-    public interface IGetUserHtmlEmailRequest
+    public interface ISendUserEmailRequest
     {
         string Email { get; set; }
         IReadOnlyCollection<string> Things { get; set; }
-        public string UserName { get; set; }
+        string UserName { get; set; }
     }
 }

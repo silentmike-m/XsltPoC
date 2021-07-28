@@ -12,7 +12,7 @@ namespace SilentMike.XsltPoC.Cient
     using Microsoft.Extensions.Hosting;
     using Microsoft.OpenApi.Models;
     using Serilog;
-    using SilentMike.XsltPoC.Shared.Intefacies;
+    using SilentMike.XsltPoC.Shared.Interfaces;
 
     public class Startup
     {

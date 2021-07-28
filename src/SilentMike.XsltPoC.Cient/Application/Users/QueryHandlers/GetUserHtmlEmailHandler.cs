@@ -7,7 +7,7 @@
     using Microsoft.Extensions.Logging;
     using SilentMike.XsltPoC.Cient.Application.Users.Queries;
     using SilentMike.XsltPoC.Cient.Entities;
-    using SilentMike.XsltPoC.Shared.Intefacies;
+    using SilentMike.XsltPoC.Shared.Interfaces;
 
     internal sealed class GetUserHtmlEmailHandler : IRequestHandler<GetUserHtmlEmail, string>
     {

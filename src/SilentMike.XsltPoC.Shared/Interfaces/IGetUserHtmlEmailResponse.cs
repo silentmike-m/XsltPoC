@@ -1,4 +1,4 @@
-﻿namespace SilentMike.XsltPoC.Shared.Intefacies
+﻿namespace SilentMike.XsltPoC.Shared.Interfaces
 {
     public interface IGetUserHtmlEmailResponse
     {

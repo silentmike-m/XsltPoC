@@ -1,6 +1,6 @@
 ﻿namespace SilentMike.XsltPoC.WebApi.Entities
 {
-    using SilentMike.XsltPoC.Shared.Intefacies;
+    using SilentMike.XsltPoC.Shared.Interfaces;
 
     internal sealed class GetUserHtmlEmailResponse : IGetUserHtmlEmailResponse
     {

@@ -4,7 +4,7 @@
     using MassTransit;
     using MediatR;
     using Microsoft.Extensions.Logging;
-    using SilentMike.XsltPoC.Shared.Intefacies;
+    using SilentMike.XsltPoC.Shared.Interfaces;
     using SilentMike.XsltPoC.WebApi.Application.Users.Queries;
     using SilentMike.XsltPoC.WebApi.Entities;
 

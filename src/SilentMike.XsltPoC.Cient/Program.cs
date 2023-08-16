@@ -1,9 +1,9 @@
 namespace SilentMike.XsltPoC.Cient
 {
     using System;
-    using System.Linq;
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Hosting;
     using Serilog;
 
@@ -11,9 +11,13 @@ namespace SilentMike.XsltPoC.Cient
     {
         public static async Task Main(string[] args)
         {
+            var configuration = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
+                .AddEnvironmentVariables()
+                .Build();
+
             Log.Logger = new LoggerConfiguration()
-                .Filter.ByExcluding(c => c.Properties.Any(p => p.Value.ToString().Contains("swagger") || p.Value.ToString().Contains("health")))
-                .WriteTo.Console()
+                .ReadFrom.Configuration(configuration)
                 .CreateLogger();
 
             try

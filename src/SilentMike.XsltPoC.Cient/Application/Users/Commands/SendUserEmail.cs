@@ -7,6 +7,7 @@
     {
         public string UserName { get; init; } = string.Empty;
         public string UserEmail { get; init; } = string.Empty;
+        public string Token { get; init; } = string.Empty;
         public IReadOnlyCollection<string> List { get; init; } = new List<string>().AsReadOnly();
     }
 }

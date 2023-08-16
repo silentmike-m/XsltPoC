@@ -33,6 +33,7 @@ namespace SilentMike.XsltPoC.Cient
             {
                 var options = new RabbitMqOptions();
                 this.Configuration.GetSection(RabbitMqOptions.SectionName).Bind(options);
+
                 configure.UsingRabbitMq((context, cfg) =>
                 {
                     cfg.Host(options.HostAddress, host =>
@@ -40,9 +41,9 @@ namespace SilentMike.XsltPoC.Cient
                         host.Username(options.Username);
                         host.Password(options.Password);
                     });
+
                     cfg.ConfigureEndpoints(context);
                 });
-
                 configure.AddRequestClient<IGetUserHtmlEmailRequest>();
 
             });
